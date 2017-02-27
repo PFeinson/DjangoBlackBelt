@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+
+    </head>
+    <body>
+        <p>
+            <b>{{thisItem.item_name}}</b>
+            <a href = "/landingPage">Home</a>
+            <a href = "/">Log Out</a>
+        </p>
+            {% if allWhoWant %}
+        <h3>Users who want this item:</h3>
+            {% for user in allWhoWant %}
+        <p>{{user.first_name}}</p>
+            {% endfor %}
+        {% else %}
+        <h3>No one wants this item... yet</h3>
+
+        {% endif %}
+    </body>
+</html>

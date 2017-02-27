@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        {% load static %}
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'loginAndReg/styles.css' %}" />
+    </head>
+    <body>
+        <div id = "form" >
+            {% if errors %}
+            {% for error in errors %}
+            {{error}}
+            {% endfor %}
+            {% endif %}
+            <h3>Registration</h3>
+            <form action = "/loginAndReg/register/" method = "post">
+                {% csrf_token %}
+                <p>
+                    <span class = "fieldLabel">First Name:</span>
+                    <input type = "text" name="firstName" />
+                </p>
+                <p>
+                    <span class = "fieldLabel">Last Name:</span>
+                    <input type = "text" name = "lastName" />
+                </p>
+                <p>
+                    <span class = "fieldLabel">Email"</span>
+                    <input type = "text" name = "email" />
+                </p>
+                <p>
+                    <span class = "fieldLabel">Password:</span>
+                    <input type = "password" name = "password" />
+                </p>
+                <p>
+                    <span class = "fieldLabel">Confirm Password:</span>
+                    <input type = "password" name = "passwordConf" />
+                </p>
+                <p>
+                    <span class = "fieldLabel">Hire Date</span>
+                    <input type = 'date' name = "hireDate"/>
+
+                </p>
+                <input type = "submit" value = "register" class="subButton"/>
+            </form>
+            <h3>Login</h3>
+            <form action = "/loginAndReg/login/" method="post">
+                {% csrf_token %}
+                <p>
+                    <span class = "fieldLabel">Email</span>
+                    <input type = "text" name = 'loginEmail' />
+                </p>
+                <p>
+                    <span class = "fieldLabel">Password</span>
+                    <input type = "password" name = 'loginPassword' />
+                </p>
+                <p>
+
+
+                <input type = "submit" value = "login" class="subButton"/>
+            </form>
+        </div>
+    </body>
+</html>

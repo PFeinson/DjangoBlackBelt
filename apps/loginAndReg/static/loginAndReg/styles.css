@@ -1,0 +1,12 @@
+.fieldLabel {
+    width:150px;
+    display:inline-block;
+}
+
+.subButton{
+    margin-left:250px;
+    color:#fff;
+    width:80px;
+    background-color:blue;
+    display:inline-block;
+}

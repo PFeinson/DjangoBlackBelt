@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+
+    </head>
+    <body>
+        <p>
+            <b>Create a new Wishlist Item:</b>
+            <a href = "/landingPage/">Home</a>
+            <a href = "/">Log Out</a>
+
+        </p>
+        <form action = "/addProduct/" method = "post">
+            {%csrf_token%}
+            <p>
+                Item/Product: <input type = "text" name = "itemName" />
+            </p>
+            <input type = "submit" value = "add item" />
+        </form>
+    </body>
+</html>

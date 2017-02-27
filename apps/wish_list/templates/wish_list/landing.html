@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+
+    </head>
+    <body>
+        <p>
+            <b>Hello {{request.session.userFirstName}}</b>
+            <a href = "/" >Log out</a>
+        </p>
+        Your Wish List:
+        <table border = 1>
+            <tr>
+                <td>Item</td>
+                <td>Added By</td>
+                <td>Date Added</td>
+                <td>Action</td>
+            </tr>
+            {% for item in allItems %}
+            <tr>
+                <td><a href=/moreInfo/{{item.id}}/>{{item.item_name}}</a></td>
+                <td>{{item.added_by.first_name}} {{item.added_by.last_name}}</td>
+                <td>{{item.date_created}}</td>
+                <td>
+                    <form action = /delete/{{item.id}}/ method = "post">
+                        {%csrf_token%}
+                        <input type = "submit" value = "delete"/>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            {% for item in wantedItems %}
+            <tr>
+                <td><a href=/moreInfo/{{item.id}}/>{{item.item_name}}</a></td>
+                <td>{{item.added_by.first_name}} {{item.added_by.last_name}}</td>
+                <td>{{item.date_created}}</td>
+                <td>
+                    <form action = /removeFromCurrent/{{item.id}}/  method = "post">
+                        {%csrf_token%}
+                        <input type = "submit" value = "Remove from current User"/>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+            Other Users' Wish List
+        <table border = 1>
+            <tr>
+                <td>Item</td>
+                <td>Added By</td>
+                <td>Date Added</td>
+                <td>Action</td>
+            </tr>
+            {% for item in othersItems %}
+            <tr>
+                <td><a href =/moreInfo/{{item.id}}>{{item.item_name}}</a></td>
+                <td>{{item.added_by.first_name}} {{item.added_by.last_name}}</td>
+                <td>{{item.date_created}}</td>
+                <td>
+                    <form action = /addToCurrent/{{item.id}}/ method = "post">
+                        {%csrf_token%}
+                        <input type = "submit" value = "Add To My Wishlist"/>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href = "/addItem/" >Add an item</a>
+    </body>
+</html>

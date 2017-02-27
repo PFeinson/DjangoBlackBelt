@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        {% load static %}
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'templates/loginAndReg/index.html' %}" />
+    </head>
+    <body>
+        <h1>Success! Welcome, {{request.session.user}}</h1>
+        <h3 id = 'congratsMsg'>Successfully registered!(or logged in)</h3>
+        <form action = "/" method = "post">
+            {% csrf_token %}
+            <input type = "submit" value = "log out" />
+        </form>
+    </body>
+</html>
